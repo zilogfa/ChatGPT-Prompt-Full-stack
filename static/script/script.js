@@ -1,9 +1,19 @@
 
 
+
+//--------- Text to Speach
+function speak(text) {
+    var msg = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(msg);
+}
+
+// -------- Prompt Setup
 let count = 0
 
 
 function postData(data){
+    $('#spinner').show();
+    console.log('spinner turned On ')
     $.ajax({
         type : 'POST',
         url : '/post_data',
@@ -20,6 +30,7 @@ function postData(data){
                 </div>
             </div>
             `)
+            
             count++;
             $('#txt-input').val('')
 
@@ -38,6 +49,11 @@ function postData(data){
                 </div> 
             </div>
             `)
+            $('section .chatBox .bot .detail a').last().click(function() {
+                speak(response);
+            });
+            console.log('spinner turned Off ')
+            $('#spinner').hide();
 
         },
         error: function(error){
@@ -51,8 +67,49 @@ function postData(data){
 
 
 
-$('#btn-submit').click(function(){
+$('#btn-submit').click(function(e){
+    e.preventDefault();  // prevent default form submission
     let data = $('#txt-input').val()
     postData(data);
     console.log(data, count)
 });
+
+
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// ------- Speach to Text setup
+var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+recognition.lang = 'en-US';
+recognition.interimResults = false;
+recognition.maxAlternatives = 1;
+
+
+var recognitionActive = false; // State variable to handle browser microphone access
+
+$('#btn-speech').click(function(){
+    // Check if recognition is already active
+    if (!recognitionActive) {
+        recognition.start();
+        recognitionActive = true;
+    }
+});
+
+// Reset state when recognition ends
+recognition.onend = function() {
+    recognitionActive = false;
+};
+
+
+recognition.onresult = function(event) {
+    var speechText = event.results[0][0].transcript;
+    $('#txt-input').val(speechText);  // Set the text input with the speech
+    // Optionally, you can automatically send the text to ChatGPT after recognizing
+    // postData(speechText);
+};
+
+// Handle errors - Speech to Text
+recognition.onerror = function(event) {
+    console.error(event.error);
+    if (event.error == "not-allowed") {
+        alert("Please allow microphone access to use this feature.");
+    }
+};

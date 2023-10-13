@@ -3,6 +3,7 @@
 
 from flask import Flask, render_template, url_for, redirect, request, jsonify, session
 import openai
+import json
 
 
 # Flask & OpenAPI Config Config
@@ -28,8 +29,8 @@ def post_data():
     print(chat_log)
     try:
         response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=chat_log
+                model="gpt-3.5-turbo-instruct",
+                prompt=chat_log
             )
         print('msg sent to ChatGPT')
         assistant_response = response['choices'][0]['message']['content']
@@ -37,8 +38,10 @@ def post_data():
         gpt = assistant_response.strip("\n").strip()
         print(gpt)
         chat_log.append({"role": "assistant", "content": assistant_response.strip("\n").strip()})
+        print(f'*** response appended to chatLog: \n{chat_log}')
         return gpt
     except openai.error.RateLimitError:
+        print(f':::::::: except :::::::: {openai.error.RateLimitError}')
         return "Sorry, we have exceeded our chat limit. Please try again later."
 
 

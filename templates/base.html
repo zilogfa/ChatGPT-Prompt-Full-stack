@@ -13,27 +13,35 @@
     <div class="container">
         <header>
             <h1>ChatGPT Prompt</h1>
-            <h3>Developed by Ali Jafarbeglou</h3>
+            <h3>This is only for showcase purposes. Any other usage without permission is prohibited.</h3>
         </header>
     
         <section>
-        <div class="chatBox">
-               <!-- Data from JS -->
-        </div>
+            <div class="chatBox">
+                <!-- Data from JS -->
+                
+            </div>
+            <!-- Loading / spinner gif when is loading -->
+            <div id="spinner" style="display: none;">
+                <img src="../static/images/spinner.gif" alt="Loading...">
+            </div>
         </section>
         
 
         <main>
+            
             <form action="">
+                <button type="button" id="btn-speech"><span class="material-symbols-rounded">keyboard_voice</span></button>
+                <div id="mic-msg">* Use your voice to input text. Make sure your browser has permission to access your microphone.</div>
                 <textarea name="" id="txt-input" placeholder="Ask me anything..."></textarea>
-                <button type="submit" id="btn-submit"><span class="material-symbols-rounded">cloud_upload</span></button>
+                <button type="button" id="btn-submit"><span class="material-symbols-rounded">cloud_upload</span></button>
             </form>
         </main>
 
 
         <footer>
             <h3>www.alijafarbeglou.com</h3>
-            <p>This is only for showcase and any other usage without permissions is prohabited</p>
+            <p><span class="material-symbols-rounded">copyright</span>Copyright 2023 - All rights reserved</p>
         </footer>
 
 

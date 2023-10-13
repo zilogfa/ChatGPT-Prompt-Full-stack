@@ -358,6 +358,7 @@ main {
     background-color: var(--color-white);
 }
 
+
 main form{
     display: flex;
     flex-direction: row;
@@ -375,7 +376,7 @@ main form textarea{
     background-color: var(--color-background);
 }
 
-main form button{
+main form #btn-submit{
     height: 4rem;
     width: 4rem;
     border-radius: 50px;
@@ -385,7 +386,7 @@ main form button{
     transition: all 0.3s ease;
 }
 
-main form button:hover{
+main form #btn-submit:hover{
     scale: 1.01;
     width: 7rem;
     height: 3.6rem;
@@ -395,12 +396,65 @@ main form button:hover{
 }
 
 
-main form button:active{
+main form #btn-submit:active{
     opacity: 80%;
     color: var(--color-primary);
     height: 3.5rem;
     width: 6.5rem;
 }
+
+main form #btn-speech{
+    color: var(--color-dark);
+    background-color: transparent;
+    height: 4rem;
+    width: 4rem;
+    transition: all 0.3s ease;
+}
+main form #btn-speech span{
+    scale: 1.2;
+    transition: all 0.3s ease;
+}
+
+#mic-msg{
+    display: none;
+}
+
+
+main form #btn-speech:hover {
+    color: var(--color-primary);
+    scale: 1.1;
+    height: 4.5rem;
+    width: 4.5rem;
+    transition: all 0.3s ease;
+}
+
+
+
+
+main form #btn-speech:hover+#mic-msg{
+    background-color: var(--color-light);
+    color: var(--color-info-dark);
+    padding: 0.5rem;
+    border-radius: 5px;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    margin-bottom: 7rem;
+    font-size: 0.7rem;
+}
+
+main form #btn-speech:active{
+    color: var(--color-danger);
+    scale: 1.2;
+    transition: all 0.3s ease;
+}
+
+main form #btn-speech:active + #mic-msg{
+    display: none;
+}
+
 
 
 
@@ -411,7 +465,15 @@ footer {
 }
 
 
+footer p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+footer p span{
+    scale:0.7;
+}
 
 
 
