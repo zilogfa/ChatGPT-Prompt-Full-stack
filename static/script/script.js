@@ -90,20 +90,21 @@ $('#btn-speech').click(function(){
     if (!recognitionActive) {
         recognition.start();
         recognitionActive = true;
+        $('#btn-speech span').addClass('recording');
     }
 });
 
 // Reset state when recognition ends
 recognition.onend = function() {
     recognitionActive = false;
+    $('#btn-speech span').removeClass('recording');
 };
 
 
 recognition.onresult = function(event) {
     var speechText = event.results[0][0].transcript;
-    $('#txt-input').val(speechText);  // Set the text input with the speech
-    // Optionally, you can automatically send the text to ChatGPT after recognizing
-    // postData(speechText);
+    $('#txt-input').val(speechText);  // text input with the speech
+    // postData(speechText); // to automatically send the text to ChatGPT after recognizing
 };
 
 // Handle errors - Speech to Text
