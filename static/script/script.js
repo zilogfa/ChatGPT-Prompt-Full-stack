@@ -90,21 +90,21 @@ $('#btn-speech').click(function(){
     if (!recognitionActive) {
         recognition.start();
         recognitionActive = true;
-        $('#btn-speech span').addClass('recording');
+        $('#btn-speech span').addClass('recording'); // CSS animation to Mice
     }
 });
 
 // Reset state when recognition ends
 recognition.onend = function() {
     recognitionActive = false;
-    $('#btn-speech span').removeClass('recording');
+    $('#btn-speech span').removeClass('recording'); // removing CSS animation
 };
 
 
 recognition.onresult = function(event) {
     var speechText = event.results[0][0].transcript;
     $('#txt-input').val(speechText);  // text input with the speech
-    // postData(speechText); // to automatically send the text to ChatGPT after recognizing
+    // postData(speechText);  automatically send the text to BE after recognizing
 };
 
 // Handle errors - Speech to Text
