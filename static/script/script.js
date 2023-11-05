@@ -43,7 +43,7 @@ function postData(data){
                     <p>${response}</p>
                     <hr>
                     <div class="detail">
-                        <h3>${count} of 3</h3> 
+                        <h3>${count}</h3> 
                         <a href="#"><span class="material-symbols-rounded">volume_down_alt</span></a>
                     </div>
                 </div> 
