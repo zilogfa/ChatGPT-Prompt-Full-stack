@@ -23,6 +23,9 @@
 
     --color-post: #5dbbff;
     --color-post-hover: #0095ff;
+    --color-mint: #97cba9;
+    --color-purple: #7c73e6;
+    --color-black: #000;
 }
 
 .dark-mode{
@@ -156,9 +159,23 @@ strong{
 
 header {
     color: var(--color-background);
-    background-color: var(--color-dark);
+    background-color: var(--color-purple);
+    background-image: linear-gradient(to bottom right, var(--color-post) , var(--color-purple), var(--color-purple));
 }
 
+header h1{
+    
+    font-size: 2.2rem;
+}
+
+header h3{
+
+    font-size: 1.6rem;
+}
+
+header p{
+    color: #8ef6e4;
+}
 
 
 
@@ -169,7 +186,6 @@ header {
 section {
     background-color: var(--color-white);
     position: relative;
-    
 }
 
 section .chatBox{    
@@ -228,6 +244,17 @@ section .bot .content{
 
 }
 
+section .user .content p{
+    font-size: 1rem;
+    color: var(--color-black);
+}
+
+section .bot .content p{
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-black);
+}
+
 section .bot .content .detail{
     display: flex;
     flex-direction: row;
@@ -243,8 +270,8 @@ section .bot .content .detail h3{
 
 section .bot .content .detail span{
     margin-top: 0.2rem;
-    font-size: 1.2rem;
-    color: var(--color-info-dark);
+    font-size: 2.2rem;
+    color: var(--color-mint);
 }
 
 section .bot .content .detail span:hover{
@@ -380,7 +407,7 @@ main form #btn-submit{
     height: 4rem;
     width: 4rem;
     border-radius: 50px;
-    background-color: var(--color-primary);
+    background-color: var(--color-purple);
     color: var(--color-white);
     box-shadow: var(--box-shadow);
     transition: all 0.3s ease;
@@ -489,7 +516,7 @@ main form #btn-speech:active + #mic-msg{
 
 footer {
     color: var(--color-white);
-    background-color: var(--color-dark);
+    background-color: var(--color-black);
 }
 
 
