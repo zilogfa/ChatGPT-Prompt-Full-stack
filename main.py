@@ -40,7 +40,7 @@ def post_data():
     print(chat_log)
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo-instruct",
+            model="gpt-3.5-turbo",
             prompt=chat_log
         )
         print('msg sent to ChatGPT')
